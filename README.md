@@ -1,6 +1,11 @@
 angular-lory
 ============
 
+Work In Progress
+---------------
+
+Warning, this plugin is not ready for production yet.
+
 Usage
 -----
 
