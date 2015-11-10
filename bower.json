@@ -1,0 +1,27 @@
+{
+  "name": "angular-lory",
+  "homepage": "",
+  "version": "0.1.0",
+  "main": [
+    "dist/angular-slick.js",
+    "bower.json"
+  ],
+  "ignore": [
+    "app"
+  ],
+  "keywords": [
+    "angular",
+    "slider"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "lory": "~1.2.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0",
+    "angular-route": "~1.4.0"
+  },
+  "author": {
+    "name": "Philip Knape"
+  }
+}
