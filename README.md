@@ -56,7 +56,7 @@ li {
 var myAppModule = angular.module('MyApp', ['ngLory'])
 ```
 
-This directive allows you to use the slick-carousel plugin as
+This directive allows you to use the angular-lory plugin as
 an angular directive. It can be specified in your HTML
 as either a `<div>` attribute or a `<lory>` element.
 
@@ -101,10 +101,10 @@ as shown in the example.
 
 ```html
 <button ng-click="loryConfig.method.slideTo(2)">slideTo(2)</button>
-<button ng-click="slickConfig.method.prev()">prev()</button>
-<button ng-click="slickConfig.method.next()">next()</button>
-<button ng-click='slickConfig.method.reset()'>reset()</button>
-<button ng-click='slickConfig.method.destroy()'>detroy()</button>
+<button ng-click="loryConfig.method.prev()">prev()</button>
+<button ng-click="loryConfig.method.next()">next()</button>
+<button ng-click='loryConfig.method.reset()'>reset()</button>
+<button ng-click='loryConfig.method.destroy()'>detroy()</button>
 ```
 
 
