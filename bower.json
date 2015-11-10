@@ -3,7 +3,7 @@
   "homepage": "",
   "version": "0.1.0",
   "main": [
-    "dist/angular-slick.js",
+    "dist/angular-lory.js",
     "bower.json"
   ],
   "ignore": [
