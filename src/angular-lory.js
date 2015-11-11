@@ -53,9 +53,10 @@ angular
 
         initOptions = function() {
           options = angular.extend(angular.copy(ngLoryConfig), {
+            enableMouseEvents: scope.enableMouseEvents || true,
             slidesToScroll: !isNaN(parseInt(scope.slidesToScroll, 10)) ? parseInt(scope.slidesToScroll, 10) : 1,
-            infinite: !isNaN(parseInt(scope.infinite, 10)) ? parseInt(scope.infinitve, 10) : false,
-            rewind: !isNaN(parseInt(scope.rewind, 10)) ? parseInt(scope.rewind, 10) : true,
+            infinite: !isNaN(parseInt(scope.infinite, 10)) ? parseInt(scope.infinitve, 10) : 1,
+            rewind: !isNaN(parseInt(scope.rewind, 10)) ? parseInt(scope.rewind, 10) : false,
             slideSpeed: !isNaN(parseInt(scope.slideSpeed, 10)) ? parseInt(scope.slideSpeed, 10) : 300,
             rewindSpeed: !isNaN(parseInt(scope.rewindSpeed, 10)) ? parseInt(scope.rewindSpeed, 10) : 600,
             snapBackSpeed: !isNaN(parseInt(scope.snapBackSpeed, 10)) ? parseInt(scope.snapBackSpeed, 10) : 200,
@@ -79,14 +80,12 @@ angular
         init = function() {
           initOptions();
           var loryElement = angular.element(element)[0];
-
           if (lorySlider) {
             lorySlider.reset();
           } else {
 
             angular.element(element).css('display', 'block');
             loryElement.addEventListener('after.lory.init', function(event, lory) {
-
               if (typeof currentIndex !== 'undefined') {
                 //return lorySlider.slideTo(currentIndex);
               }
@@ -115,37 +114,29 @@ angular
           // fires before slide change
           loryElement.addEventListener('before.lory.slide', function(event, currentSlide, nextSlide) {
             if (typeof options.event.beforeSlide === 'function') {
-              options.event.beforeSlide(event);
+              options.event.beforeSlide(event, lorySlider, loryElement);
             }
           });
 
           loryElement.addEventListener('after.lory.slide', function(event, currentSlide) {
             if (typeof options.event.afterSlide === 'function') {
-              console.log(arguments);
-              console.log('afterSlide');
+              options.event.afterSlide(event, lorySlider, loryElement);
             }
           });
 
-          if (typeof options.event.reInit === 'function') {
-            loryElement.addEventListener('after.loro.init', function(event) {
-              console.log(arguments);
-            })
-          }
-
           if (typeof options.event.resize !== 'undefined') {
             loryElement.addEventListener('on.lory.resize', function(event) {
-              console.log('resize');
+              options.event.resize(event, lorySlider, loryElement);
             });
           }
 
           if (typeof options.event.destroy !== 'undefined') {
             loryElement.addEventListener('on.lory.destroy', function(event) {
-              console.log('destroy');
               options.event.destroy(event, lorySlider, loryElement);
             });
           }
 
-        }
+        };
 
         destroyAndInit = function () {
           destroy();
