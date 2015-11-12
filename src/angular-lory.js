@@ -169,7 +169,7 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          if (newVal !== null && !newVal.waitForInit) {
+          if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             methods(newVal.method);
             return destroyAndInit();
           }
