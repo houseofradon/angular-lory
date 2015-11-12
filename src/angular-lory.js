@@ -44,15 +44,20 @@ angular
         classNamePrevCtrl: '@',
         classNameNextCtrl: '@'
       },
-      restrict: 'AE',
+      restrict: 'E',
+      replace: true,
       link: function(scope, element, attrs) {
 
         angular.element(element).css('display', 'none');
 
-        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex;
+        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex, methods;
+        var firstRun = true;
 
         initOptions = function() {
           options = angular.extend(angular.copy(ngLoryConfig), {
+            // Custom options
+            initOnStart: scope.initOnStart || true,
+            // Lory options
             enableMouseEvents: scope.enableMouseEvents || true,
             slidesToScroll: !isNaN(parseInt(scope.slidesToScroll, 10)) ? parseInt(scope.slidesToScroll, 10) : 1,
             infinite: !isNaN(parseInt(scope.infinite, 10)) ? parseInt(scope.infinitve, 10) : 1,
@@ -72,7 +77,9 @@ angular
           var loryElement = angular.element(element);
           if (lorySlider) {
             // remove Lory
-           lorySlider.destroy();
+            lorySlider.destroy();
+            lorySlider = undefined;
+            angular.element(element).css('display', 'none');
           }
           return loryElement;
         };
@@ -89,7 +96,6 @@ angular
               if (typeof currentIndex !== 'undefined') {
                 //return lorySlider.slideTo(currentIndex);
               }
-
             });
 
             $timeout(function() {
@@ -97,18 +103,6 @@ angular
             }, 0);
 
           }
-
-          scope.internalControl = options.method || {};
-
-          // Method
-          loryMethodList.forEach(function (value) {
-            scope.internalControl[value] = function () {
-              var args;
-              args = Array.prototype.slice.call(arguments);
-              args.unshift(value);
-              lorySlider[value](args[args.length - 1]);
-            };
-          });
 
           // arguments: currentSlide, nextSlide
           // fires before slide change
@@ -131,7 +125,7 @@ angular
           }
 
           if (typeof options.event.destroy !== 'undefined') {
-            loryElement.addEventListener('on.lory.destroy', function(event) {
+            loryElement.addEventListener('after.lory.destroy', function(event) {
               options.event.destroy(event, lorySlider, loryElement);
             });
           }
@@ -143,12 +137,40 @@ angular
           init();
         };
 
+        methods = function(methods) {
+
+          scope.internalControl = methods || {};
+
+          // Method
+          loryMethodList.forEach(function (value) {
+            scope.internalControl[value] = function () {
+              var args;
+              args = Array.prototype.slice.call(arguments);
+              args.unshift(value);
+              if (value === 'setup') {
+                return destroyAndInit();
+              } else if (value === 'destroy') {
+                return destroy();
+              } else {
+                if (!lorySlider) {
+                  console.warn('you need to instantiate lory first');
+                  return;
+                }
+                lorySlider[value](args[args.length - 1]);
+              }
+
+            };
+          });
+
+        };
+
         element.one('$destroy', function () {
           destroy();
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          if (newVal !== null) {
+          methods(newVal.method);
+          if (newVal !== null && newVal.initOnStart) {
             return destroyAndInit();
           }
         }, true);
