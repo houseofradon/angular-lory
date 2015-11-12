@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * 
- * Version: 0.1.0 - 2015-11-12T13:21:20.466Z
+ * Version: 0.1.0 - 2015-11-12T13:36:53.355Z
  * License: 
  */
 
@@ -65,7 +65,7 @@ angular
         initOptions = function() {
           options = angular.extend(angular.copy(ngLoryConfig), {
             // Custom options
-            initOnStart: scope.initOnStart || true,
+            waitForInit: scope.initOnStart || false,
             // Lory options
             enableMouseEvents: scope.enableMouseEvents || true,
             slidesToScroll: !isNaN(parseInt(scope.slidesToScroll, 10)) ? parseInt(scope.slidesToScroll, 10) : 1,
@@ -178,8 +178,8 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          methods(newVal.method);
-          if (newVal !== null && newVal.initOnStart) {
+          if (newVal !== null && !newVal.waitForInit) {
+            methods(newVal.method);
             return destroyAndInit();
           }
         }, true);
