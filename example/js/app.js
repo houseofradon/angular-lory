@@ -35,7 +35,8 @@ angular
     };
 
     $scope.setupLory = function() {
-      $scope.loryConfig.method.setup();
+      console.log($scope.loryConfig);
+      //$scope.loryConfig.method.setup();
     };
     $scope.destroy = function() {
       $scope.loryConfig.method.destroy();
