@@ -13,6 +13,10 @@
     user-select: none;
 }
 
+.slides {
+    display: block;
+}
+
 .frame {
     position: relative;
     width: 270px;
@@ -35,172 +39,8 @@
     color: #fff;
 }
 
-.slides {
-    display: inline-block;
-}
-
-.simple li,
-.rewind li,
-.events li {
+.simple {
     width: 270px;
     margin-right: 10px;
 }
 
-.percentage .slides {
-    display: block;
-}
-
-.percentage .frame {
-    width: 87.452%;
-}
-
-.percentage li {
-    width: 100%;
-}
-
-.variablewidth li {
-    width: 280px;
-    margin-right: 10px;
-
-}
-
-.multipleelements li, .multislides li, .ease li {
-    width: 60px;
-    margin-right: 10px;
-}
-
-.simple li:last-child,
-.rewind li:last-child,
-.events li:last-child,
-.variablewidth li:last-child,
-.multipleelements li:last-child,
-.multislides li:last-child,
-.ease li:last-child {
-    margin-right: 0;
-}
-
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    margin-top: -25px;
-    display: block;
-    cursor: pointer;
-}
-
-.next {
-    right: 0;
-}
-
-.prev {
-    left: 0;
-}
-
-.next svg, .prev svg {
-    width: 25px;
-}
-
-.events_log {
-    display: block;
-    font-size: 12px;
-    line-height: 1.6;
-    text-align: center;
-    background-color: #fcfcfc;
-    border: 1px solid #d2d2d2;
-    margin-top: -20px;
-    margin-bottom: 20px;
-}
-
-.events_log > span {
-    display: none;
-}
-
-.events_log > span:nth-last-child(-n+5) {
-    display: block;
-}
-
-@media screen and (min-width: 640px ) {
-    /**
-     * Demo Page Styles
-     */
-    .examplecode, .frame, .events_log {
-        width: 580px;
-    }
-
-    .testscreen {
-        width: 500px;
-    }
-
-    table {
-        width: 580px;
-        margin: 0 auto;
-    }
-
-    tr {
-        padding: 0;
-    }
-
-    /**
-     * Slider specific styles
-     */
-
-    .slider {
-        width: 640px;
-        margin: 0 auto 20px;
-    }
-
-    .simple li,
-    .rewind li,
-    .events li {
-        width: 580px;
-    }
-
-    .variablewidth li {
-        width: 280px;
-        margin-right: 10px;
-    }
-
-    .multipleelements li, .multislides li, .ease li {
-        width: 130px;
-        margin-right: 20px;
-    }
-}
-
-@media screen and (min-width: 980px ) {
-    /**
-     * Demo Page Styles
-     */
-
-    .examplecode {
-        width: 880px;
-    }
-
-    /**
-     * Slider specific styles
-     */
-
-    .slider {
-        width: 980px;
-        margin: 0 auto 20px;
-    }
-
-    .frame,
-    .events_log {
-        width: 880px;
-    }
-
-    .simple li,
-    .rewind li,
-    .events li {
-        width: 880px;
-    }
-
-    .variablewidth li {
-        width: 280px;
-        margin-right: 10px;
-    }
-
-    .multipleelements li, .multislides li, .ease li {
-        width: 205px;
-        margin-right: 20px;
-    }
-}

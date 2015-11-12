@@ -17,9 +17,10 @@ angular
     //ngLoryConfig.autoplay = false;
   }])
   .controller('LoryController', function($scope, $timeout) {
-    $scope.number1 = [1, 2, 3, 4, 5, 6, 7, 8];
+    $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
     $scope.loryConfig = {
+      initOnStart: false,
       method: {},
       event: {
         init: function (event, lory) {
@@ -32,4 +33,12 @@ angular
         destroy: function() {}
       }
     };
+
+    $scope.setupLory = function() {
+      $scope.loryConfig.method.setup();
+    };
+    $scope.destroy = function() {
+      $scope.loryConfig.method.destroy();
+    }
+
   });
