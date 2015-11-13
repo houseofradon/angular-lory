@@ -92,9 +92,9 @@ angular
           } else {
 
             angular.element(element).css('display', 'block');
-            loryElement.addEventListener('after.lory.init', function(event, lory) {
+            loryElement.addEventListener('after.lory.init', function(event) {
               if (typeof currentIndex !== 'undefined') {
-                //return lorySlider.slideTo(currentIndex);
+                return lorySlider.slideTo(currentIndex);
               }
             });
 
@@ -108,25 +108,25 @@ angular
           // fires before slide change
           loryElement.addEventListener('before.lory.slide', function(event, currentSlide, nextSlide) {
             if (typeof options.event.beforeSlide === 'function') {
-              options.event.beforeSlide(event, lorySlider, loryElement);
+              options.event.beforeSlide(event.detail.currentSlide, event.detail.nextSlide, lorySlider, loryElement);
             }
           });
 
-          loryElement.addEventListener('after.lory.slide', function(event, currentSlide) {
+          loryElement.addEventListener('after.lory.slide', function(event) {
             if (typeof options.event.afterSlide === 'function') {
-              options.event.afterSlide(event, lorySlider, loryElement);
+              options.event.afterSlide(event.detail.currentSlide, lorySlider, loryElement);
             }
           });
 
           if (typeof options.event.resize !== 'undefined') {
-            loryElement.addEventListener('on.lory.resize', function(event) {
-              options.event.resize(event, lorySlider, loryElement);
+            loryElement.addEventListener('on.lory.resize', function() {
+              options.event.resize(lorySlider, loryElement);
             });
           }
 
           if (typeof options.event.destroy !== 'undefined') {
-            loryElement.addEventListener('after.lory.destroy', function(event) {
-              options.event.destroy(event, lorySlider, loryElement);
+            loryElement.addEventListener('after.lory.destroy', function() {
+              options.event.destroy(lorySlider, loryElement);
             });
           }
 
