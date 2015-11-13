@@ -57,6 +57,7 @@ angular
           options = angular.extend(angular.copy(ngLoryConfig), {
             // Custom options
             waitForInit: scope.initOnStart || false,
+            startIndex: scope.startIndex || undefined,
             // Lory options
             enableMouseEvents: scope.enableMouseEvents || true,
             slidesToScroll: !isNaN(parseInt(scope.slidesToScroll, 10)) ? parseInt(scope.slidesToScroll, 10) : 1,
@@ -94,15 +95,19 @@ angular
             angular.element(element).css('display', 'block');
             loryElement.addEventListener('after.lory.init', function(event) {
               if (typeof currentIndex !== 'undefined') {
-                return lorySlider.slideTo(currentIndex);
+                $timeout(function() {
+                  lorySlider.slideTo(currentIndex);
+                  return;
+                },0);
               }
             });
 
             $timeout(function() {
+              currentIndex = options.startIndex;
               lorySlider = $window.lory(loryElement, options);
             }, 0);
 
-          }
+         }
 
           // arguments: currentSlide, nextSlide
           // fires before slide change

@@ -21,6 +21,7 @@ angular
 
     $scope.loryConfig = {
       initOnStart: false,
+      startIndex: 3,
       method: {},
       event: {
         init: function (event, lory) {

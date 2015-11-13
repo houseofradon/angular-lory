@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * 
- * Version: 0.1.0 - 2015-11-13T09:27:27.568Z
+ * Version: 0.1.0 - 2015-11-13T09:38:27.475Z
  * License: 
  */
 
@@ -66,6 +66,7 @@ angular
           options = angular.extend(angular.copy(ngLoryConfig), {
             // Custom options
             waitForInit: scope.initOnStart || false,
+            startIndex: scope.startIndex || undefined,
             // Lory options
             enableMouseEvents: scope.enableMouseEvents || true,
             slidesToScroll: !isNaN(parseInt(scope.slidesToScroll, 10)) ? parseInt(scope.slidesToScroll, 10) : 1,
@@ -102,16 +103,24 @@ angular
 
             angular.element(element).css('display', 'block');
             loryElement.addEventListener('after.lory.init', function(event) {
+              console.log(currentIndex);
               if (typeof currentIndex !== 'undefined') {
-                return lorySlider.slideTo(currentIndex);
+                console.log(lorySlider);
+                $timeout(function() {
+                  lorySlider.slideTo(currentIndex);
+                  return;
+                },0);
               }
             });
 
             $timeout(function() {
+              console.log(options)
+              currentIndex = options.startIndex;
               lorySlider = $window.lory(loryElement, options);
+              console.log(lorySlider);
             }, 0);
 
-          }
+         }
 
           // arguments: currentSlide, nextSlide
           // fires before slide change
