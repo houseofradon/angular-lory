@@ -174,7 +174,7 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          setmethods(newVal);
+          setMethods(newVal);
           if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             return destroyAndInit();
           }
