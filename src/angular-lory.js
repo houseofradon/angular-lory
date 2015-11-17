@@ -50,7 +50,7 @@ angular
 
         angular.element(element).css('display', 'none');
 
-        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex, methods;
+        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex, setMethods;
         var firstRun = true;
 
         initOptions = function() {
@@ -142,9 +142,9 @@ angular
           init();
         };
 
-        methods = function(methods) {
-
-          scope.internalControl = methods || {};
+        setMethods = function(obj) {
+          var methods = obj ? obj.methods : undefined;
+          scope.internalControl = method || {};
 
           // Method
           loryMethodList.forEach(function (value) {
@@ -174,7 +174,7 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          methods(newVal.method);
+          setmethods(newVal);
           if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             return destroyAndInit();
           }

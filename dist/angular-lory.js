@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * 
- * Version: 0.1.0 - 2015-11-13T09:38:27.475Z
+ * Version: 0.1.0 - 2015-11-17T13:04:00.989Z
  * License: 
  */
 
@@ -59,7 +59,7 @@ angular
 
         angular.element(element).css('display', 'none');
 
-        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex, methods;
+        var lorySlider, options, initOptions, destroy, init, destroyAndInit, currentIndex, setMethods;
         var firstRun = true;
 
         initOptions = function() {
@@ -103,9 +103,7 @@ angular
 
             angular.element(element).css('display', 'block');
             loryElement.addEventListener('after.lory.init', function(event) {
-              console.log(currentIndex);
               if (typeof currentIndex !== 'undefined') {
-                console.log(lorySlider);
                 $timeout(function() {
                   lorySlider.slideTo(currentIndex);
                   return;
@@ -114,10 +112,8 @@ angular
             });
 
             $timeout(function() {
-              console.log(options)
               currentIndex = options.startIndex;
               lorySlider = $window.lory(loryElement, options);
-              console.log(lorySlider);
             }, 0);
 
          }
@@ -155,9 +151,9 @@ angular
           init();
         };
 
-        methods = function(methods) {
-
-          scope.internalControl = methods || {};
+        setMethods = function(obj) {
+          var methods = obj ? obj.methods : undefined;
+          scope.internalControl = method || {};
 
           // Method
           loryMethodList.forEach(function (value) {
@@ -187,7 +183,7 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          methods(newVal.method);
+          setmethods(newVal);
           if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             return destroyAndInit();
           }

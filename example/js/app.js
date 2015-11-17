@@ -20,15 +20,21 @@ angular
     $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
     $scope.loryConfig = {
-      initOnStart: false,
+      waitForInit: true,
       startIndex: 3,
       method: {},
       event: {
         init: function (event, lory) {
           console.log('init');
         },
-        beforeSlide: function() {},
-        afterSlide: function() {},
+        beforeSlide: function() {
+          console.log('before');
+          console.log(arguments);
+        },
+        afterSlide: function() {
+          console.log('after');
+          console.log(arguments);
+        },
         reInit: function() {},
         resize: function() {},
         destroy: function() {}
