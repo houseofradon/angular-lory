@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * 
- * Version: 0.1.0 - 2015-11-17T13:10:23.252Z
+ * Version: 0.1.0 - 2015-11-17T13:11:42.779Z
  * License: 
  */
 
@@ -153,7 +153,7 @@ angular
 
         setMethods = function(obj) {
           var methods = obj ? obj.methods : undefined;
-          scope.internalControl = method || {};
+          scope.internalControl = methods || {};
 
           // Method
           loryMethodList.forEach(function (value) {

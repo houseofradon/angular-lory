@@ -144,7 +144,7 @@ angular
 
         setMethods = function(obj) {
           var methods = obj ? obj.methods : undefined;
-          scope.internalControl = method || {};
+          scope.internalControl = methods || {};
 
           // Method
           loryMethodList.forEach(function (value) {
