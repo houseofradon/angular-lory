@@ -174,10 +174,15 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          setMethods(newVal);
+
+          if (newVal !== null && newVal !== undefined) {
+            setMethods(newVal.method);
+          }
+
           if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             return destroyAndInit();
           }
+
         }, true);
 
       }

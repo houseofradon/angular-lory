@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * 
- * Version: 0.1.0 - 2015-11-17T13:11:42.779Z
+ * Version: 0.1.0 - 2015-11-18T15:22:36.673Z
  * License: 
  */
 
@@ -183,10 +183,15 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-          setMethods(newVal);
+
+          if (newVal !== null && newVal !== undefined) {
+            setMethods(newVal.method);
+          }
+
           if (newVal !== null && newVal !== undefined && !newVal.waitForInit) {
             return destroyAndInit();
           }
+
         }, true);
 
       }
