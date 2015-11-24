@@ -1,0 +1,42 @@
+{
+  "name": "lory",
+  "version": "1.6.7",
+  "homepage": "http://meandmax.github.io/lory/",
+  "authors": [
+    "Maximilian Heinz <info@maximilian-heinz.de>"
+  ],
+  "description": "Touch enabled minimalistic slider written in vanilla JavaScript.",
+  "main": "dist/lory.js",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "swipe",
+    "slider",
+    "carousel",
+    "infinite",
+    "touch",
+    "JavaScript",
+    "Vanilla",
+    "lean"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.6.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.6.7",
+    "commit": "dd5754826187b1d797a0147cf901ac3ddb54700d"
+  },
+  "_source": "git://github.com/meandmax/lory.git",
+  "_target": "~1.6.7",
+  "_originalSource": "lory",
+  "_direct": true
+}

@@ -1,0 +1,30 @@
+{
+  "name": "angular-lory",
+  "homepage": "",
+  "version": "0.1.0",
+  "main": [
+    "dist/angular-lory.js",
+    "bower.json"
+  ],
+  "ignore": [
+    "app"
+  ],
+  "keywords": [
+    "angular",
+    "slider"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "lory": "~1.2.6",
+    "highlight": "~8.9.1",
+    "angular-highlightjs": "~0.5.1",
+    "highlightjs": "8.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0",
+    "angular-route": "~1.4.0"
+  },
+  "author": {
+    "name": "Philip Knape"
+  }
+}

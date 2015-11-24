@@ -15,10 +15,11 @@
   ],
   "dependencies": {
     "angular": "~1.4.0",
-    "lory": "~1.2.6",
+    "lory": "~1.6.7",
     "highlight": "~8.9.1",
     "angular-highlightjs": "~0.5.1",
-    "highlightjs": "8.0.0"
+    "highlightjs": "8.0.0",
+    "angular-lory": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0",
