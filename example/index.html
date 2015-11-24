@@ -2,21 +2,273 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Angular Lory Carousel</title>
-
-    <!-- Stylesheets -->
-
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" href="css/railscast.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body ng-app="loryApp">
+  
+  <header>
+    <div class="ribbon">
+      <a href="https://github.com/houseofradon/angular-lory">Fork me on GitHub</a>
+    </div>
+    <img class="logo" src="logo.png" />
+  </header>
+ 
+  <p class="description"></p> 
+  <p class="description">+ everything <a href="http://meandmax.github.io/lory/">lory</a> offers</p>
 
-<div class="container">
+  <a class="dist" href="https://github.com/houseofradon/angular-lory/blob/master/dist/angular-lory.js">Download Here</a>
 
-</div>
+  <section class="prerequisited">
 
-<div ng-view=""></div>
+    <div class="examplecode">
+      <h2>Usage:<br><small><em>Install bower component</em></small></h2>
+      <div hljs>
+        bower install angular-lory --save
+      </div>
+    </div>
+    <div class="examplecode">
+      <h2><small><em>Add angular, lory and angular-lory.</em></small></h2>
+      <div hljs>
+      </div>
+    </div>
+    <div class="examplecode">
+      <h2><small><em>Add a dependency to the "ngLory" module.</em></small></h2>
+      <div hljs>
+        angular.module('MyApp', ['ngLory']);
+      </div>
+    </div>
+   
+    <div class="examplecode">
+      <h2>Prerequisited Html structure<br><small><em>Class names can be changed through options</em></small></h2>
+      <div hljs>
+        <lory settings="loryConfig" class="slider js_slider">
+          <div class="frame js_frame">
+            <ul class="slides js_slides">
+              <li class="js_slide">1</li>
+              <li class="js_slide">2</li>
+              <li class="js_slide">3</li>
+              <li class="js_slide">4</li>
+            </ul>
+          </div>
+        </lory>
+      </div>
+    </div>
 
+    <div class="examplecode">
+      <h2>Prerequisited CSS styles</h2>
+      <div hljs>  
+        /**
+         * (optional) define here the style definitions which should be applied on the slider container
+         * e.g. width including further controls like arrows etc.
+         */
+        .slider {}
+
+        .frame {
+            /**
+             * (optional) wrapper width, specifies width of the slider frame.
+             */
+            width: 880px;
+
+            position: relative;
+            font-size: 0;
+            line-height: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .slides {
+            display: inline-block;
+        }
+
+        li {
+            position: relative;
+            display: inline-block;
+
+            /**
+             * (optional) if the content inside the slide element has a defined size.
+             */
+            width: 880px;
+        }
+      </div>
+    </div>
+    <div class="examplecode">
+      <h2><small><em>That's it!</em></small></h2>
+    </div>
+ 
+  </section>
+
+  <section class="examples" ng-view=""></section>
+  
+  <section class="api">
+    <h2>Public API<br>
+    <small><em>
+      ngLory extends all lory's native API's through the method object
+    </em></small>
+    </h2>
+
+    <table>
+      <tr>
+        <th>prev:</th>
+        <td>slides to the previous slide</td>
+      </tr>
+      <tr>
+        <th>next:</th>
+        <td>slides to the next slide</td>
+      </tr>
+      <tr>
+        <th>slideTo:</th>
+        <td>slides to the index given as an argument: (arguments: index {number})</td>
+      </tr>
+      <tr>
+        <th>returnIndex:</th>
+        <td>returns the index of the current slide element</td>
+      </tr>
+      <tr>
+        <th>setup:</th>
+        <td>binds eventlisteners, merging default and user options, setup the slides based on DOM (called once during initialisation)</td>
+        <td>Call setup if DOM or user options have changed or eventlisteners needs to be rebinded.</td>
+      </tr>
+      <tr>
+        <th>reset:</th>
+        <td>sets the slider back to the starting position and resets the current index (called on Resize event)</td>
+      </tr>
+      <tr>
+        <th>destroy:</th>
+        <td>unmount/destroy the instance of lory</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="options">
+    <h2>
+      Options<br>
+      <small><em>
+        ngLory extends all lory's native options and can be attached through either the settings options or directly on the lory tag
+        </em></small>
+    </h2>
+    <table>
+      <tr>
+        <th>waitForInit</th>
+        <td>Delay init on lory until setup method is called</td>
+        <td>default: false<td>
+      </tr>
+      <tr>
+        <th>startIndex</th>
+        <td>Sets the intit slide for the slideshow</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <th>slidesToScroll</th>
+        <td>slides scrolled at once</td>
+        <td>default: 1</td>
+      </tr>
+      <tr>
+        <th>infinite</th>
+        <td>like carousel, works with multiple slides. (do not combine with rewind)</td>
+        <td>default: false (number of visible slides)</td>
+      </tr>
+      <tr>
+        <th>rewind</th>
+        <td>if slider reached the last slide, with next click the slider goes back to the startindex. (do not combine with infinite)</td>
+        <td>default: false</td>
+      </tr>
+      <tr>
+        <th>slideSpeed</th>
+        <td>time in milliseconds for the animation of a valid slide attempt</td>
+        <td>default: 300</td>
+      </tr>
+      <tr>
+        <th>rewindSpeed</th>
+        <td>time in milliseconds for the animation of the rewind after the last slide</td>
+        <td>default: 600</td>
+      </tr>
+      <tr>
+        <th>snapBackSpeed</th>
+        <td>time for the snapBack of the slider if the slide attempt was not valid</td>
+        <td>default: 200</td>
+      </tr>
+      <tr>
+        <th>ease</th>
+        <td>cubic bezier easing functions: http://easings.net/de</td>
+        <td>default: 'ease'</td>
+      </tr>
+      <tr>
+        <th>classNameFrame</th>
+        <td>class name for slider frame</td>
+        <td>default: 'js_frame'</td>
+      </tr>
+      <tr>
+        <th>classNameSlideContainer</th>
+        <td>class name for slides container</td>
+        <td>default: 'js_slides'</td>
+      </tr>
+      <tr>
+        <th>classNamePrevCtrl</th>
+        <td>class name for slider previous control</td>
+        <td>default: 'js_prev'</td>
+      </tr>
+      <tr>
+        <th>classNameNextCtrl</th>
+        <td>class name for slider next control</td>
+        <td>default: 'js_next'</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="hooks">
+    <h2>Events</h2>
+    <table>
+      <tr>
+        <th>event.afterInit</th>
+        <td><strong>extends:</strong> after.lory.init</td>
+        <td>fires after initialisation (end of setup function)</td>
+      </tr>
+      <tr>
+        <th>event.beforeSlide</th>
+        <td><strong>extends:</strong> before.lory.slide</td>
+        <td><strong>arguments:</strong> currentSlide, nextSlide</td>
+        <td>fires before slide change</td>
+      </tr>
+      <tr>
+        <th>event.afterSlide</th>
+        <td><strong>extends:</strong> after.lory.slide</td>
+        <td><strong>arguments:</strong> currentSlide</td>
+        <td>fires after slide change</td>
+      </tr>
+      <tr>
+        <th>event.resize</th>
+        <td><strong>extends:</strong> on.lory.resize</td>
+        <td>fires on every resize event</td>
+      </tr>
+      <tr>
+        <th>event.touchStart</th>
+        <td><strong>extends:</strong> on.lory.touchstart</td>
+        <td>fires on every slider touchstart event</td>
+      </tr>
+      <tr>
+        <th>event.touchEnd<th>
+        <td><strong>extends:</strong> on.lory.touchend</td>
+        <td>fires on every slider touchend event</td>
+      </tr>
+      <tr>
+        <th>event.destroy</th>
+        <td><strong>extends:</strong> on.lory.destroy</td>
+        <td>fires when the slider instance gets destroyed</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    Copyright &copy; 2015 Philip Knape, contributors. Released under the MIT license
+  </footer>
 <!-- JavaScript -->
 <!--[if IE 8]>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -26,10 +278,12 @@
 
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-route/angular-route.js"></script>
-
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="../bower_components/angular-highlightjs/angular-highlightjs.js"></script>
 <script src="js/lory.min.js"></script>
 
-<script src="../dist/angular-lory.js"></script>
+<script src="../src/angular-lory.js"></script>
 
 <script src="js/app.js"></script>
 

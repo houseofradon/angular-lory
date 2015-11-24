@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('loryApp', ['ngLory', 'ngRoute'])
+  .module('loryApp', ['ngLory', 'ngRoute', 'hljs'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -16,37 +16,56 @@ angular
     //ngLoryConfig. = true;
     //ngLoryConfig.autoplay = false;
   }])
-  .controller('LoryController', function($scope, $timeout) {
+  .controller('LoryController', function($scope, $timeout, $window) {
+
     $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+    $window.hljs.initHighlightingOnLoad();
 
     $scope.loryConfig = {
-      waitForInit: true,
-      startIndex: 3,
+      infinite: 1,
+    };
+
+    $scope.loryConfigMethods = {
+      infinite: 1,
+      method: {},
+    };
+
+    $scope.next = function() {
+      $scope.loryConfigMethods.method.next();
+    };
+
+    $scope.prev = function() {
+      $scope.loryConfig.methodMethods.prev();
+    };
+
+    $scope.events = [];
+
+    function handleEvent(e) {
+      var time = new Date();
+      time = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ',' + time.getMilliseconds();
+      $scope.events.push('[' + time + '] Event dispatched: "' + e.type + '"');
+      $scope.$apply();
+    }
+
+    $scope.loryConfigEvents = {
+      infinite: 1,
       method: {},
       event: {
-        init: function (event, lory) {
-          console.log('init');
-        },
-        beforeSlide: function() {
-          console.log('before');
-          console.log(arguments);
-        },
-        afterSlide: function() {
-          console.log('after');
-          console.log(arguments);
-        },
-        reInit: function() {},
-        resize: function() {},
-        destroy: function() {}
+        init: handleEvent,
+        beforeSlide: handleEvent,
+        afterSlide: handleEvent,
+        reInit: function(event) {},
+        resize: function(event) {},
+        destroy: function(event) {}
       }
     };
 
+
     $scope.setupLory = function() {
-      console.log($scope.loryConfig);
       //$scope.loryConfig.method.setup();
     };
     $scope.destroy = function() {
       $scope.loryConfig.method.destroy();
-    }
+    };
 
   });

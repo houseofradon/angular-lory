@@ -1,3 +1,137 @@
+<h2>Single element - Fixed width [infinite]</h2>
+
+<lory settings="loryConfig" class="slider js_slider simple">
+  <div class="frame js_frame">
+    <ul class="slides js_slides">
+      <li class="js_slide">1</li>
+      <li class="js_slide">2</li>
+      <li class="js_slide">3</li>
+      <li class="js_slide">4</li>
+      <li class="js_slide">5</li>
+      <li class="js_slide">6</li>
+    </ul>
+  </div>
+
+  <span class="js_prev prev">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/></g></svg>
+  </span>
+
+  <span class="js_next next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/></g></svg>
+  </span>
+</lory>
+
+<div class="examplecode">
+  <div hljs>
+    $scope.loryConfig = {
+      method: {},
+      event: {
+        init: function (event, lory) {
+        },
+        beforeSlide: function(slideindex) {
+        },
+        afterSlide: function(slideIndex) {
+        },
+        reInit: function() {},
+        resize: function() {},
+        destroy: function() {}
+      }
+    };
+  </div>
+</div>
+
+<h2>Single element - Custom methods</h2>
+
+<lory settings="loryConfigMethods" class="slider js_slider simple">
+  <div class="frame js_frame">
+    <ul class="slides js_slides">
+      <li class="js_slide">1</li>
+      <li class="js_slide">2</li>
+      <li class="js_slide">3</li>
+      <li class="js_slide">4</li>
+      <li class="js_slide">5</li>
+      <li class="js_slide">6</li>
+    </ul>
+  </div>
+</lory>
+<div class="dist" ng-click="next()">next</div>
+<div class="dist" ng-click="next()">prev</div>
+
+<div class="examplecode"><pre>
+  
+  <div hljs>
+    <lory settings="loryConfigMethods">
+    ...
+    </lory>
+
+    <div ng-click="next()">next</div>
+    <div ng-click="prevt()">prev</div>
+  </div>
+
+  <div hljs>
+    $scope.loryConfigMethods = {
+      method: {},
+    };
+    
+    $scope.next = function() {
+      $scope.loryConfigMethods.method.next();
+    };
+
+    $scope.prev = function() {
+      $scope.loryConfigMethods.method.prev();
+    };
+
+  </div>
+</div>
+
+<h2>Single element - Events</h2>
+
+<lory settings="loryConfigEvents" class="slider js_slider simple">
+  <div class="frame js_frame">
+    <ul class="slides js_slides">
+      <li class="js_slide">1</li>
+      <li class="js_slide">2</li>
+      <li class="js_slide">3</li>
+      <li class="js_slide">4</li>
+      <li class="js_slide">5</li>
+      <li class="js_slide">6</li>
+    </ul>
+  </div>
+  <span class="js_prev prev">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/></g></svg>
+  </span>
+
+  <span class="js_next next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/></g></svg>
+  </span>
+
+</lory>
+<code class="events_log"><span ng-repeat="event in events">{{event}}<span></code>
+
+
+<div class="examplecode"><pre>
+  <div hljs>
+    
+    $scope.events = [];
+
+    function handleEvent(e) {
+      var time = new Date();
+      time = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ',' + time.getMilliseconds();
+      $scope.events.push('[' + time + '] Event dispatched: "' + e.type + '"');
+      $scope.$apply();
+    }
+
+    $scope.loryConfig = {
+      method: {},
+      event: {
+        beforeSlide: handleEvent,
+        afterSlide: handleEvent,
+      }
+    };
+  </div>
+</div>
+
+<!--
 <div>
   <div ng-click="update()">update</div>
   <div ng-click="destroy()">destroy</div>
@@ -20,3 +154,4 @@
     </span>
   </lory>
 </div>
+-->

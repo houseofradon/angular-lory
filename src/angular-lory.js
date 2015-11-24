@@ -94,6 +94,11 @@ angular
 
             angular.element(element).css('display', 'block');
             loryElement.addEventListener('after.lory.init', function(event) {
+
+              if(typeof options.event.afterInit === 'function') {
+                options.event.afterInit(event)
+              }
+
               if (typeof currentIndex !== 'undefined') {
                 $timeout(function() {
                   lorySlider.slideTo(currentIndex);
@@ -111,27 +116,44 @@ angular
 
           // arguments: currentSlide, nextSlide
           // fires before slide change
-          loryElement.addEventListener('before.lory.slide', function(event, currentSlide, nextSlide) {
+          loryElement.addEventListener('before.lory.slide', function(event) {
             if (typeof options.event.beforeSlide === 'function') {
-              options.event.beforeSlide(event.detail.currentSlide, event.detail.nextSlide, lorySlider, loryElement);
+              options.event.beforeSlide(event, event.detail.currentSlide, event.detail.nextSlide, lorySlider, loryElement);
             }
           });
 
           loryElement.addEventListener('after.lory.slide', function(event) {
             if (typeof options.event.afterSlide === 'function') {
-              options.event.afterSlide(event.detail.currentSlide, lorySlider, loryElement);
+              options.event.afterSlide(event, event.detail.currentSlide, lorySlider, loryElement);
             }
           });
 
-          if (typeof options.event.resize !== 'undefined') {
-            loryElement.addEventListener('on.lory.resize', function() {
-              options.event.resize(lorySlider, loryElement);
+          if (typeof options.event.resize === 'function') {
+            loryElement.addEventListener('on.lory.resize', function(event) {
+              options.event.resize(event, lorySlider, loryElement);
             });
           }
 
-          if (typeof options.event.destroy !== 'undefined') {
-            loryElement.addEventListener('after.lory.destroy', function() {
-              options.event.destroy(lorySlider, loryElement);
+          if (typeof options.event.touchEnd === 'function') {
+            loryElement.addEventListener('on.lory.touchend', function(event) {
+              options.event.touchEnd(event);
+            });
+          }
+
+          if (typeof options.event.touchMove === 'function') {
+            loryElement.addEventListener('on.lory.touchmove', function(event) {
+              options.event.touchMove(event);
+            });
+          }
+          if (typeof options.event.touchStart === 'function') {
+            loryElement.addEventListener('on.lory.touchstart', function(event) {
+              options.event.touchStart(event);
+            });
+          }
+
+          if (typeof options.event.destroy === 'function') {
+            loryElement.addEventListener('after.lory.destroy', function(event) {
+              options.event.destroy(event, lorySlider, loryElement);
             });
           }
 
@@ -142,8 +164,7 @@ angular
           init();
         };
 
-        setMethods = function(obj) {
-          var methods = obj ? obj.methods : undefined;
+        setMethods = function(methods) {
           scope.internalControl = methods || {};
 
           // Method
@@ -174,7 +195,6 @@ angular
         });
 
         return scope.$watch('settings', function (newVal, oldVal) {
-
           if (newVal !== null && newVal !== undefined) {
             setMethods(newVal.method);
           }

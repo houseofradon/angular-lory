@@ -1,10 +1,12 @@
 angular-lory
 ============
 
-Work In Progress
----------------
 
-Warning, this plugin is not ready for production yet.
+<p align="center">
+  <img src="./example/lory_small.png" width="200px" />
+</p>
+
+Please visit: [http://houseofradon.github.io/angular-lory/](http://houseofradon.github.io/angular-lory/ "nglory")
 
 Usage
 -----
