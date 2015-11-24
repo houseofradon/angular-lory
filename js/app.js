@@ -35,7 +35,7 @@ angular
     };
 
     $scope.prev = function() {
-      $scope.loryConfig.methodMethods.prev();
+      $scope.loryConfigMethods.method.prev();
     };
 
     $scope.events = [];
