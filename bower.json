@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.0",
-    "lory": "1.6.7"
+    "lory": "1.6.8"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0",
