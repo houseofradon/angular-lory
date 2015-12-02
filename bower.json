@@ -1,7 +1,7 @@
 {
   "name": "angular-lory",
   "homepage": "http://houseofradon.github.io/angular-lory/",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": [
     "dist/angular-lory.js",
     "bower.json"
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.0",
-    "lory": "https://github.com/houseofradon/lory.git"
+    "lory": "https://github.com/houseofradon/lory.git#90d0c0a"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0",
