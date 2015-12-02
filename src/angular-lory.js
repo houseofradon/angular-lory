@@ -118,7 +118,7 @@ angular
           // fires before slide change
           loryElement.addEventListener('before.lory.slide', function(event) {
             if (typeof options.event.beforeSlide === 'function') {
-              options.event.beforeSlide(event, event.detail.currentSlide, event.detail.nextSlide, lorySlider, loryElement);
+              options.event.beforeSlide(event, event.detail.index, event.detail.nextSlide, lorySlider, loryElement);
             }
           });
 

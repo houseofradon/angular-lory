@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * http://houseofradon.github.io/angular-lory/
- * Version: 0.1.0 - 2015-11-24T16:39:52.146Z
+ * Version: 0.1.0 - 2015-11-25T11:22:07.373Z
  * License: 
  */
 
@@ -127,7 +127,7 @@ angular
           // fires before slide change
           loryElement.addEventListener('before.lory.slide', function(event) {
             if (typeof options.event.beforeSlide === 'function') {
-              options.event.beforeSlide(event, event.detail.currentSlide, event.detail.nextSlide, lorySlider, loryElement);
+              options.event.beforeSlide(event, event.detail.index, event.detail.nextSlide, lorySlider, loryElement);
             }
           });
 

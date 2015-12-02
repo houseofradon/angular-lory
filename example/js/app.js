@@ -23,6 +23,18 @@ angular
 
     $scope.loryConfig = {
       infinite: 1,
+      event: {
+        beforeSlide: function() {
+        },
+        afterSlide: function() {
+        },
+        touchEnd: function(event) {
+        },
+        touchMove: function(event) {
+        },
+        touchStart: function(event) {
+        }
+      }
     };
 
     $scope.loryConfigMethods = {

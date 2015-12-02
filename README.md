@@ -8,13 +8,31 @@ angular-lory
 
 Please visit: [http://houseofradon.github.io/angular-lory/](http://houseofradon.github.io/angular-lory/ "nglory")
 
-Usage
+Installation
 -----
 
-- Using [bower](http://bower.io/) to install it. `bower install angular-lory`
-- Add `angular`, `lory` and `angular-lory` to your code.
+- Using [bower](http://bower.io/) to install it. 
 
-## Prerequisited css
+`bower install angular-lory`
+
+- Add `angular`, `lory`	and `angular-lory` to your code.
+
+```html
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/lory/lory.js"></script>
+    <script src="../bower_components/angular-lory/dist/angular-lory.min.js"></script>
+```
+
+- Add the sortable module as a dependency to your application module: `ngLory`
+
+```js
+angular.module('MyApp', ['ngLory'])
+```
+
+Usage
+----
+
+### Prerequisited css & HTML
 
 ```css
 /**
@@ -51,31 +69,19 @@ li {
 }
 ```
 
-```html
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/lory/lory.js"></script>
-    <script src="../bower_components/angular-lory/dist/angular-lory.min.js"></script>
-```
-
-- Add the sortable module as a dependency to your application module: `ngLory`
-
-```js
-var myAppModule = angular.module('MyApp', ['ngLory'])
-```
-
 This directive allows you to use the angular-lory plugin as
 an angular directive. It can be specified in your HTML
 as either a `<div>` attribute or a `<lory>` element.
 
 ```html
-    <lory infinite=true>
+    <lory settings="loryConfig" infinite=true>
     ...
     </lory>
 ```
 
 ### Attributes & Event ###
-`settings`: optional `Object` containing any of the lory options. Consult [here](http://meandmax.github.io/lory/).
- - `method` optional containing lort method. discussed [below](#method) in detail
+`settings`: required `Object` containing any of the lory options. Consult [here](http://meandmax.github.io/lory/).
+ - `method` optional containing lory method. discussed [below](#method) in detail
  - `event` optional containing lory event
 
 ```javascript
@@ -83,12 +89,7 @@ $scope.loryConfig = {
     rewind: true,
     infinite: false,  
     method: {},
-    event: {
-        beforeSlide: function (event) {
-        },
-        afterSlide: function (event) {
-        }
-    }
+    event: {}
 };
 ```
 
@@ -113,32 +114,15 @@ as shown in the example.
 <button ng-click='loryConfig.method.reset()'>reset()</button>
 <button ng-click='loryConfig.method.destroy()'>detroy()</button>
 ```
+Todo
+----
+- Tests
+- More examples
 
+Credits
+-------
+* PhilipKnape ([@philipknape](https://twitter.com/philipknape))
 
-### Slide data ###
-For change slide content, you have to set `ng-if` to destroy and init it
-
-- controller:
-```js
-    $scope.number = [{label: 1}, {label: 2}, {label: 3}, {label: 4}, {label: 5}, {label: 6}, {label: 7}, {label: 8}];
-    $scope.numberLoaded = true;
-    $scope.numberUpdate = function(){
-        $scope.numberLoaded = false; // disable lory
-        
-        //number update
-        
-        $scope.numberLoaded = true; // enable lory
-    };
-```
-- html:
-```html
-    <script type="text/ng-template" id="tpl.html">
-        <h3>{{ i.label }}</h3>
-    </script>
-    
-    <lory ng-if="numberLoaded">
-        <div ng-repeat="i in number">
-            <div class="" ng-include="'tpl.html'"></div>
-        </div>
-    </lory>
-```
+Lisence
+-------
+This project is under the MIT license.
