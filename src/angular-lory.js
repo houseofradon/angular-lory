@@ -22,6 +22,7 @@ angular
       'after.lory.init',
       'before.lory.slide',
       'after.lory.slide',
+      'after.lory.transition',
       'on.lory.resize',
       'on.lory.touchstart',
       'on.lory.touchmove',
@@ -127,6 +128,12 @@ angular
               options.event.afterSlide(event, event.detail.currentSlide, lorySlider, loryElement);
             }
           });
+
+          if (typeof options.event.transition === 'function') {
+            loryElement.addEventListener('after.lory.transition', function(event) {
+              options.event.transition(event, lorySlider, loryElement);
+            });
+          }
 
           if (typeof options.event.resize === 'function') {
             loryElement.addEventListener('on.lory.resize', function(event) {

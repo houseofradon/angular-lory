@@ -2,7 +2,7 @@
  * angular-lory
  * 
  * http://houseofradon.github.io/angular-lory/
- * Version: 0.1.0 - 2015-11-25T11:22:07.373Z
+ * Version: 0.1.5 - 2015-12-09T16:02:20.280Z
  * License: 
  */
 
@@ -31,6 +31,7 @@ angular
       'after.lory.init',
       'before.lory.slide',
       'after.lory.slide',
+      'after.lory.transition',
       'on.lory.resize',
       'on.lory.touchstart',
       'on.lory.touchmove',
@@ -136,6 +137,12 @@ angular
               options.event.afterSlide(event, event.detail.currentSlide, lorySlider, loryElement);
             }
           });
+
+          if (typeof options.event.transition === 'function') {
+            loryElement.addEventListener('after.lory.transition', function(event) {
+              options.event.transition(event, lorySlider, loryElement);
+            });
+          }
 
           if (typeof options.event.resize === 'function') {
             loryElement.addEventListener('on.lory.resize', function(event) {
