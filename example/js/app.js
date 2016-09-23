@@ -51,7 +51,6 @@ angular
     };
 
     $scope.setup = function() {
-      console.log('yeh')
       $scope.loryConfigMethods.method.setup();
     };
 

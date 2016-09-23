@@ -13,10 +13,6 @@ describe('angular lory testing', function() {
     $timeout = _$timeout_;
     $injector = _$injector_;
 
-    scope.data = [
-      {id: 1, title: 'Foo', content: 'Bar'}
-    ];
-
   }));
 
   // DSL (domain-specific language)
@@ -33,8 +29,6 @@ describe('angular lory testing', function() {
     <div> 2 </div>\
     </lory>');
     scope.$digest();
-    console.log(element)
-    expect(element.hasClass('').toBe(true));
   });
 
 })
