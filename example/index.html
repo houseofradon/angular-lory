@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Touch enabled minimalistic slider written in vanilla JavaScript">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular Lory Carousel</title>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/app.css" />
-    <link rel="stylesheet" href="css/railscast.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <link rel="stylesheet" href="./css/railscast.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body ng-app="loryApp">
-  
+
   <header>
     <div class="ribbon">
       <a href="https://github.com/houseofradon/angular-lory">Fork me on GitHub</a>
     </div>
     <img class="logo" src="logo.png" />
   </header>
- 
-  <p class="description"></p> 
+
+  <p class="description"></p>
   <p class="description">+ everything <a href="http://meandmax.github.io/lory/">lory</a> offers</p>
 
   <a class="dist" href="https://github.com/houseofradon/angular-lory/blob/master/dist/angular-lory.js">Download Here</a>
@@ -45,7 +45,7 @@
         angular.module('MyApp', ['ngLory']);
       </div>
     </div>
-   
+
     <div class="examplecode">
       <h2>Prerequisited Html structure<br><small><em>Class names can be changed through options</em></small></h2>
       <div hljs>
@@ -64,7 +64,7 @@
 
     <div class="examplecode">
       <h2>Prerequisited CSS styles</h2>
-      <div hljs>  
+      <div hljs>
         /**
          * (optional) define here the style definitions which should be applied on the slider container
          * e.g. width including further controls like arrows etc.
@@ -102,11 +102,11 @@
     <div class="examplecode">
       <h2><small><em>That's it!</em></small></h2>
     </div>
- 
+
   </section>
 
   <section class="examples" ng-view=""></section>
-  
+
   <section class="api">
     <h2>Public API<br>
     <small><em>
@@ -276,16 +276,16 @@
 <![endif]-->
 
 
-<script src="../bower_components/angular/angular.min.js"></script>
-<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-route.min.js"></script>
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src="../bower_components/angular-highlightjs/angular-highlightjs.js"></script>
-<script src="js/lory.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.7.1/angular-highlightjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.3.3/lory.min.js"></script>
 
-<script src="../src/angular-lory.js"></script>
+<script src="./js/angular-lory.js"></script>
 
-<script src="js/app.js"></script>
+<script src="./js/app.js"></script>
 
 </body>
 </html>
