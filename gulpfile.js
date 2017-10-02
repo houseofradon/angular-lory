@@ -67,7 +67,7 @@ gulp.task('scripts', ['clean'], function () {
         }))
         .pipe(concat('angular-lory.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(gulp.dest('example/js'))
+        .pipe(gulp.dest('docs/js'))
         .pipe(uglify({preserveComments: 'some'}))
         .pipe(rename({extname: '.min.js'}))
         .pipe(gulp.dest('dist'));
@@ -96,7 +96,7 @@ gulp.task('karma-watch', ['build'], function () {
 });
 
 gulp.task('serve', ['watch'], function() {
-  gulp.src(['example', 'dist'])
+  gulp.src(['docs', 'dist'])
     .pipe(webserver({
       livereload: true,
       open: true

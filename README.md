@@ -3,7 +3,7 @@ angular-lory
 
 
 <p align="center">
-  <img src="./example/lory_small.png" width="200px" />
+  <img src="./docs/lory_small.png" width="200px" />
 </p>
 
 Please visit: [http://houseofradon.github.io/angular-lory/](http://houseofradon.github.io/angular-lory/ "nglory")
@@ -11,7 +11,7 @@ Please visit: [http://houseofradon.github.io/angular-lory/](http://houseofradon.
 Installation
 -----
 
-- Using [bower](http://bower.io/) to install it. 
+- Using [bower](http://bower.io/) to install it.
 
 `bower install angular-lory`
 
