@@ -6,6 +6,7 @@ var jshint = require('gulp-jshint');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var rename = require('gulp-rename');
+var webserver = require('gulp-webserver');
 var es = require('event-stream');
 var del = require('del');
 var uglify = require('gulp-uglify');
@@ -21,11 +22,10 @@ var config = {
     ' * <%= pkg.name %>\n' +
     ' * <%= pkg.authors %>\n' +
     ' * <%= pkg.homepage %>\n' +
-    ' * Version: <%= pkg.version %> - <%= timestamp %>\n' +
     ' * License: <%= pkg.license %>\n' +
     ' */\n\n\n'
 };
-console.log('yo§')
+
 gulp.task('default', ['build', 'test']);
 gulp.task('build', ['scripts', 'styles']);
 gulp.task('test', ['build', 'karma']);
@@ -66,10 +66,8 @@ gulp.task('scripts', ['clean'], function () {
             errorHandler: handleError
         }))
         .pipe(concat('angular-lory.js'))
-        .pipe(header(config.banner, {
-            timestamp: (new Date()).toISOString(), pkg: config.pkg
-        }))
         .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('example/js'))
         .pipe(uglify({preserveComments: 'some'}))
         .pipe(rename({extname: '.min.js'}))
         .pipe(gulp.dest('dist'));
@@ -96,6 +94,14 @@ gulp.task('karma', ['build'], function () {
 gulp.task('karma-watch', ['build'], function () {
     karma.start({configFile: __dirname + '/karma.conf.js', singleRun: false});
 });
+
+gulp.task('serve', ['watch'], function() {
+  gulp.src(['example', 'dist'])
+    .pipe(webserver({
+      livereload: true,
+      open: true
+    }));
+})
 
 var handleError = function (err) {
     console.log(err.toString());
