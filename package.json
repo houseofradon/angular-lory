@@ -2,11 +2,11 @@
   "name": "angular-lory",
   "version": "0.1.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/angular-lory.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Philip Knape",
   "license": "MIT",
   "devDependencies": {
     "gulp": "~3.9.0",
