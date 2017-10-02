@@ -9,10 +9,10 @@ module.exports = function (config) {
 
     // List of files / patterns to load in the browser
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
+      'example/bower_components/angular/angular.js',
+      'example/bower_components/angular-mocks/angular-mocks.js',
 
-      'bower_components/lory/dist/lory.js',
+      'example/bower_components/lory/dist/lory.js',
       'dist/angular-lory.js',
       'test/**/*.spec.js'
     ],
