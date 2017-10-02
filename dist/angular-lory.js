@@ -1,12 +1,3 @@
-/*!
- * angular-lory
- * 
- * http://houseofradon.github.io/angular-lory/
- * Version: 0.1.6 - 2016-06-29T13:58:25.817Z
- * License: 
- */
-
-
 'use strict';
 
 angular
